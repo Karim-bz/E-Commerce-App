@@ -1,25 +1,18 @@
+import { Link } from "react-router-dom";
 import type { Product } from "../types/product";
 
-interface Props {
-  product: Product;
-  onAddToCart?: (product: Product) => void;
-}
-
-const ProductCard = ({ product, onAddToCart }: Props) => {
+export default function ProductCard({ id, title, price, image }: Product) {
   return (
-    <div className="border p-4 rounded shadow-sm">
-      <img src={product.image} alt={product.title} className="w-full h-48 object-cover" />
-      <h3 className="text-lg font-semibold mt-2">{product.title}</h3>
-      <p className="text-gray-600">${product.price}</p>
-
-      <button
-        className="bg-blue-500 text-white px-4 py-2 rounded mt-2 w-full"
-        onClick={() => onAddToCart?.(product)}
-      >
-        Add to Cart
+    <Link 
+      to={`/product/${id}`} 
+      className="bg-white rounded-xl shadow-lg hover:shadow-2xl hover:scale-105 transition transform duration-300 p-4 flex flex-col items-center"
+    >
+      <img src={image} className="w-full h-52 object-cover rounded-md mb-4" />
+      <h3 className="font-semibold text-lg text-dark mb-1">{title}</h3>
+      <p className="text-primary font-bold text-xl mb-2">${price}</p>
+      <button className="mt-auto w-full bg-primary text-white py-2 rounded-lg hover:bg-accent transition duration-300">
+        View Details
       </button>
-    </div>
+    </Link>
   );
-};
-
-export default ProductCard;
+}

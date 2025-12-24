@@ -1,5 +1,10 @@
-const Products = () => {
-  return <h1>TEST page products</h1>;
-};
+import ProductList from "../components/ProductList";
 
-export default Products;
+export default function Products() {
+  return (
+    <div>
+      <h1 className="text-3xl font-bold mb-6">All Products</h1>
+      <ProductList />
+    </div>
+  );
+}
